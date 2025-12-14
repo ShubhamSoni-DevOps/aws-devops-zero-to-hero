@@ -1,12 +1,18 @@
 #!/bin/bash
 set -e
 
-# Stop the running container (if any)
-containerID=$(docker ps -a | awk '{print $1}' | grep -vi container)
-for ID in ${containerID}
-do
-  docker stop ${ID}
-  docker rm ${ID}
-done
-# Removing the old images (if any)
+echo "Stopping and removing all containers..."
+
+containers=$(docker ps -aq)
+
+if [ -n "$containers" ]; then
+  docker stop $containers
+  docker rm $containers
+else
+  echo "No containers found."
+fi
+
+echo "Removing unused images..."
 docker image prune -af
+
+echo "Cleanup completed successfully."
