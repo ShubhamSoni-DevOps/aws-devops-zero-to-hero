@@ -1,4 +1,5 @@
 #!/bin/bash
+# deploying the simple python web application.
 set -e
 
 # Pull the Docker image from Docker Hub
