@@ -2,7 +2,7 @@
 set -e
 
 # Stop the running container (if any)
-containerID=$(docker ps -a | awk -F " " '{print $1}' | grep -vi container)
+containerID=$(docker ps -a | awk '{print $1}' | grep -vi container)
 for ID in ${containerID}
 do
   docker stop ${ID}
