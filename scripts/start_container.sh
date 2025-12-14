@@ -1,4 +1,5 @@
 #!/bin/bash
+# Run the sample webapp
 set -e
 
 # Pull the Docker image from Docker Hub
